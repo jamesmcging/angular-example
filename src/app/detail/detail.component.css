@@ -1,0 +1,20 @@
+.detail-container {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+label {
+    font-size: 0.8em;
+    color: #a3a3a3;
+}
+
+span span {
+    display: block;
+}

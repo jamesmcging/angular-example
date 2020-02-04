@@ -1,0 +1,33 @@
+<div (window:scroll)="onScroll()">
+    <div id="photos" class="grid">
+        <ng-container *ngFor="let objImage of arrImages; let i=index" [ngSwitch]="getImageSize(i + 1)">
+
+            <span *ngSwitchCase="1" class="size-1-2">
+                <a routerLink="detail/{{objImage.id}}">
+                    <img class="image" src="{{objImage.previewURL}}" alt="{{objImage.tags}}}">
+                </a>
+            </span>
+            <span *ngSwitchCase="2" class="size-2-1">
+                <a routerLink="detail/{{objImage.id}}">
+                    <img class="image" src="{{objImage.previewURL}}" alt="{{objImage.tags}}}">
+                </a>
+            </span>
+            <span *ngSwitchCase="3" class="size-2-2">
+                <a routerLink="detail/{{objImage.id}}">
+                    <img class="image" src="{{objImage.previewURL}}" alt="{{objImage.tags}}}">
+                </a>
+            </span>
+            <span *ngSwitchCase="4">
+                <a routerLink="detail/{{objImage.id}}">
+                    <img class="image" src="{{objImage.previewURL}}" alt="{{objImage.tags}}}">
+                </a>
+            </span>
+
+        </ng-container>
+    </div>
+    <div class="more">
+        <img src="../../assets/loading.gif">
+<!--        <button type="button" (click)="fetchMoreImages()">Give me more!</button>-->
+    </div>
+
+</div>
