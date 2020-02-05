@@ -7,6 +7,7 @@ import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 
 import { HttpClientModule} from '@angular/common/http';
+import { ListService } from './list.service';
 
 @NgModule({
     declarations: [
@@ -17,9 +18,11 @@ import { HttpClientModule} from '@angular/common/http';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [
+        ListService
+    ],
     bootstrap: [AppComponent]
 })
 

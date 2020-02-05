@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
+
 import { ListService } from '../list.service';
-import {ImageModel} from '../models/ImageModel';
+
+import { ImageModel } from '../models/ImageModel';
+import { ResponseModel } from '../models/ResponseModel';
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +16,10 @@ export class DetailComponent implements OnInit {
     nImageId: number;
     objImage: ImageModel = new ImageModel();
 
-    constructor(private route: ActivatedRoute, private imageService: ListService) {}
+    constructor(
+        private route: ActivatedRoute,
+        private imageService: ListService
+    ) {}
 
     ngOnInit() {
         this.route.params.subscribe(params => {
@@ -30,7 +36,8 @@ export class DetailComponent implements OnInit {
             this
                 .imageService
                 .fetchImageById(this.nImageId)
-                .subscribe(objResponse => {
+                .subscribe(
+                    (objResponse: ResponseModel) => {
                     if (objResponse.hits && objResponse.hits[0]) {
                         this.objImage = objResponse.hits[0];
                     }

@@ -1,8 +1,8 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ListService } from './../list.service';
-import { Observable } from 'rxjs';
 
 import { ImageModel } from '../models/ImageModel';
+import { ResponseModel} from '../models/ResponseModel';
 
 @Component({
   selector: 'app-list',
@@ -18,7 +18,12 @@ export class ListComponent implements OnInit {
     constructor(private imageService: ListService) {}
 
     ngOnInit() {
-        this.fetchImages();
+        this.arrImages = this.imageService.getImages();
+
+        if (!this.arrImages.length) {
+            this.fetchImages();
+        }
+
     }
 
     /**
@@ -43,8 +48,8 @@ export class ListComponent implements OnInit {
             .imageService
             .fetchImages()
             .subscribe(
-                ResponseModel => {
-                    this.arrImages.push(...ResponseModel.hits);
+                (objResponse: ResponseModel) => {
+                    this.arrImages.push(...objResponse.hits);
                     this.bFetchingImages = false;
                 },
                 error => {
